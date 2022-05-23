@@ -1,0 +1,38 @@
+---
+version: "3"
+
+tasks:
+  default:
+    cmds:
+      - task -l
+  update:
+    desc: Update dependencies Chart
+    silent: true
+    cmds:
+      - cd {{.CLI_ARGS}} && helm dependency update
+  install:
+    silent: true
+    cmds:
+      - helm upgrade --install {{.APP_NAME}} --create-namespace {{.FOLDER}} -f {{.FOLDER}}/values.yaml -n {{.NAMESPACE}}
+  traefik:
+    desc: Install ingress controller traefik
+    deps:
+      - task: update
+        vars: {CLI_ARGS: ./traefik}
+    cmds:
+      - task: install
+        vars:
+          NAMESPACE: traefik
+          APP_NAME: traefik
+          FOLDER: ./traefik
+  argocd:
+    desc: Install argocd
+    deps:
+      - task: update
+        vars: {CLI_ARGS: ./argocd}
+    cmds:
+      - task: install
+        vars:
+          NAMESPACE: argocd
+          APP_NAME: argocd
+          FOLDER: ./argocd

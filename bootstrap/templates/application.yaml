@@ -1,0 +1,52 @@
+{{- range $key, $value := .Values.applications -}}
+{{- $disabled := default false .disabled }}
+{{- $name := default $key .name }}
+{{- $path := default $key .path }}
+{{- $destinationNamespace := default $name .destinationNamespace }}
+{{- $source := default false .source }}
+{{- $disableAutoSync := default false .disableAutoSync }}
+{{- $automatedPrune := default true .automatedPrune }}
+{{- $selfHeal := default true .selfHeal }}
+{{- $ignoreDifferences := default false .ignoreDifferences }}
+{{- $syncOptions := default false .syncOptions }}
+{{- $repoURL := default $.Values.repository .repoURL }}
+{{- if not $disabled }}
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: {{ $name }}
+  namespace: {{ default "argocd" $.Values.argocdNamespace }}
+spec:
+  destination:
+    namespace: {{ $destinationNamespace }}
+    server: {{ default "https://kubernetes.default.svc" $.Values.server }}
+  project: {{ default "default" .project }}
+  source:
+    path: {{ $path }}
+    repoURL: {{ $repoURL }}
+{{ if $source -}}
+{{- toYaml $source | indent 4 }}
+{{- end }}
+  syncPolicy:
+{{- if not $disableAutoSync }}
+    automated:
+      prune: {{ default true $automatedPrune }}
+      selfHeal: {{ default true $selfHeal }}
+{{- end }}
+  syncOptions:
+    - CreateNamespace=true
+{{ if $syncOptions -}}
+{{- toYaml $syncOptions | indent 6 }}
+{{- end }}
+  # Ignore differences at the specified json pointers
+  ignoreDifferences:
+    - group: apps
+      kind: Deployment
+      jsonPointers:
+        - /spec/replicas
+{{ if $ignoreDifferences -}}
+{{- toYaml $ignoreDifferences | indent 4 }}
+{{- end }}
+{{- end }}
+{{ end }}

@@ -1,0 +1,17 @@
+argo-cd:
+  fullnameOverride: argocd
+  installCRDs: false
+  dex:
+    enabled: false
+  server:
+    extraArgs:
+      - --insecure
+    config:
+      url: "argocd.k8s.local"
+    ingress:
+      enabled: true
+      kubernetes.io/ingress.class: "traefik"
+      ingress.kubernetes.io/ssl-redirect: "false"
+      hosts:
+        - argocd.k8s.local
+      

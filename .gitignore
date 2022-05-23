@@ -1,0 +1,13 @@
+.idea/
+*.iml 
+charts/ 
+*.lock 
+*.pem 
+# Macos 
+.DS_Store 
+.DS_Store? 
+*.run 
+*.workspace 
+*.code-workspace 
+.vscode/
+ide-conf 

@@ -1,0 +1,14 @@
+---
+argocdNamespace: argocd                           # Namespace de argocd
+repository: "https://github.com/Seynokan/autodeploy-gitres.git"    # lien du dépôt git ou la configuration ce trouve
+server: "https://kubernetes.default.svc" # L'url du serveur a appliqué la configuration
+
+applications:
+  argocd:
+#    disableAutoSync: true
+    name: argocd
+    path: argocd
+    source:
+      helm:
+        valueFiles:
+          - values.yaml
