@@ -34,8 +34,8 @@ spec:
       prune: {{ default true $automatedPrune }}
       selfHeal: {{ default true $selfHeal }}
 {{- end }}
-  syncOptions:
-    - CreateNamespace=true
+    syncOptions:
+        - CreateNamespace=true
 {{ if $syncOptions -}}
 {{- toYaml $syncOptions | indent 6 }}
 {{- end }}
