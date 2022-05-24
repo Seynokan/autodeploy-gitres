@@ -36,6 +36,8 @@ spec:
 {{- end }}
     syncOptions:
         - CreateNamespace=true
+      - CreateNamespace=true
+>>>>>>> bd9290a1a2629afdce453c6cc7e6bb38d6f8b7bc
 {{ if $syncOptions -}}
 {{- toYaml $syncOptions | indent 6 }}
 {{- end }}
@@ -50,3 +52,4 @@ spec:
 {{- end }}
 {{- end }}
 {{ end }}
+
