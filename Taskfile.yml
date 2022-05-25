@@ -36,3 +36,10 @@ tasks:
           NAMESPACE: argocd
           APP_NAME: argocd
           FOLDER: ./argocd
+  bootstrap:
+    desc: Install bootstrap
+    deps:
+      - task: update
+        vars: {CLI_ARGS: ./bootstrap}
+    cmds:
+      - helm upgrade --install bootstrap --create-namespace bootstrap -f bootstrap/values.yaml
