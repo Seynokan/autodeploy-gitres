@@ -12,3 +12,12 @@ applications:
       helm:
         valueFiles:
           - values.yaml
+
+  traefik:
+#    disableAutoSync: true
+     name: traefik
+     path: traefik
+     source:
+       helm:
+        valueFiles:
+          - values.yaml
