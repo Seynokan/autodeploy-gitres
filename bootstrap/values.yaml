@@ -36,3 +36,11 @@ applications:
       helm:
         valueFiles:
           - values.yaml
+  stakater-reloader:
+    name: stakater-reloader
+    path: stakater-reloader
+    destinationNamespace: kube-system
+    source:
+      helm:
+        valueFiles:
+          - values.yaml
