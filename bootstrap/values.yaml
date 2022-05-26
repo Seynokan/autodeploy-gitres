@@ -29,3 +29,10 @@ applications:
       helm:
         valueFiles:
           - values.yaml
+  bootstrap:
+    destinationNamespace: argocd
+    path: bootstrap
+    source:
+      helm:
+        valueFiles:
+          - values.yaml
