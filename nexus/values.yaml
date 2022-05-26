@@ -4,7 +4,6 @@ nexus-repository-manager:
     enabled: true
     ingressClassName: "traefik"
     annotations:
-      kubernetes.io/ingress.class: "traefik"
       ingress.kubernetes.io/ssl-redirect: "false"
     hostRepo: nexus.k8s.local
 
