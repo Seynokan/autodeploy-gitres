@@ -21,3 +21,11 @@ applications:
        helm:
         valueFiles:
           - values.yaml
+  nexus:
+    #    disableAutoSync: true
+    name: nexus
+    path: nexus
+    source:
+      helm:
+        valueFiles:
+          - values.yaml

@@ -1,15 +1,11 @@
 nexus-repository-manager:
   fullnameOverride: nexus
-  installCRDs: false
-  dex:
-    enabled: false
-  server:
-    config:
-      url: "nexus.k8s.local"
-    ingress:
-      enabled: true
+  ingress:
+    enabled: true
+    ingressClassName: "traefik"
+    annotations:
       kubernetes.io/ingress.class: "traefik"
       ingress.kubernetes.io/ssl-redirect: "false"
-      hosts:
-        - nexus.k8s.local
+    hostRepo: nexus.k8s.local
+
       
