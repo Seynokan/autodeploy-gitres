@@ -1,4 +1,7 @@
 traefik:
+  api:
+    dashboard: true
+    insecure: true
   service:
     enabled: true
     externalIPs: 
