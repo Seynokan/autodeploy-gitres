@@ -1,5 +1,8 @@
 nexus-repository-manager:
   fullnameOverride: nexus
+  HostAliases:
+    hostnames:
+      - "nexus.k8s.local"
   ingress:
     enabled: true
     ingressClassName: "traefik"
