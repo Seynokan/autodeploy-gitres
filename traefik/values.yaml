@@ -1,13 +1,12 @@
 traefik:
-  api:
-    dashboard: true
-    insecure: true
-  service:
-    enabled: true
-    externalIPs: 
-      - 192.168.49.2
-  ports:
-    traefik:
-      port: 9000
-      expose: true
-
+api:
+  dashboard: true
+  insecure: true
+service:
+  enabled: true
+  externalIPs:
+    - 192.168.49.2
+ports:
+  traefik:
+    port: 9000
+    expose: true
