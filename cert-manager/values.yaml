@@ -9,4 +9,3 @@ cert-manager:
   cainjector:
     extraArgs:
       - --leader-elect=false
-      - 
