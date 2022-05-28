@@ -1,0 +1,12 @@
+---
+cert-manager:
+  InstallCRDs: true
+
+  global:
+    leaderElection:
+      namespace: cert-manager
+
+  cainjector:
+    extraArgs:
+      - --leader-elect=false
+      - 

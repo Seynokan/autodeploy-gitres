@@ -44,3 +44,14 @@ applications:
       helm:
         valueFiles:
           - values.yaml
+
+  cert-manager:
+    destinationNamespace: cert-manager
+      finalizers: false
+      name: cert-manager
+      path: infrastructure/security/cert-manager
+      source:
+        helm:
+          valueFiles:
+            - values.yaml
+            -
